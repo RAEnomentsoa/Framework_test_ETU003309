@@ -7,16 +7,18 @@ import core.annotation.Route;
 public class helloController {
 
     @Route("/hello")
-    public String test(String path, String methodName) {
+    public String test(String path, String methodName, String ControllerName) {
         return "<h1>Controller 2 Test</h1>"
                 + "<p>URL: " + path + "</p>"
-                + "<p>Method: " + methodName + "</p>";
+                + "<p>Method: " + methodName + "</p>"
+                + "<p>Controller: " + ControllerName + "</p>";
     }
 
     @Route("/hello/ok")
-    public String hello(String path, String methodName) {
+    public String hello(String path, String methodName , String ControllerName) {
         return "<h1>Hello Controller</h1>"
                 + "<p>URL: " + path + "</p>"
-                + "<p>Method: " + methodName + "</p>";
+                + "<p>Method: " + methodName + "</p>"
+                + "<p>Controller: " + ControllerName + "</p>";
     }
 }
