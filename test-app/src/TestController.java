@@ -2,18 +2,20 @@ package app.controllers;
 
 import core.annotation.Controller;
 import core.annotation.Route;
+import core.ModelView;
 
 @Controller
 public class TestController {
 
     @Route("/test")
-    public void test(String path, String methodName, String ControllerName, String returnTypeName) {
-        // return "<h1>Controller Test</h1>"
-        // + "<p>URL: " + path + "</p>"
-        // + "<p>Method: " + methodName + "</p>"
-        // + "<p>Controller: " + ControllerName + "</p>"
-        // + "<p>Return Type: " + returnTypeName + "</p>";
-        // sprint 4 tests
+    public ModelView test() {
+        // test method returning a view
+        ModelView mv = new ModelView("testView.jsp");
+        String[] items = { "Item 1", "Item 2", "Item 3" };
+        mv.addItem("items", items);
+        mv.addItem("message", "This is a test message from TestController.");
+        return mv;
+
     }
 
     @Route("/test/hello")

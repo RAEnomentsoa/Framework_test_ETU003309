@@ -44,7 +44,12 @@ mkdir "%local%\temp\WEB-INF"
 mkdir "%local%\temp\WEB-INF\lib"
 mkdir "%local%\temp\WEB-INF\classes"
 
-xcopy /s /e /q "%working_dir%\web\*" "%local%\temp\"
+if exist "%working_dir%\web\index.jsp" (
+    copy "%working_dir%\web\index.jsp" "%local%\temp"
+)
+REM Copy everything except index.*
+robocopy "%working_dir%\web" "%local%\temp\WEB-INF" /S /E /XF index.jsp index.html /NFL /NDL /NJH /NJS /NP
+
 copy "%working_dir%\*.xml" "%local%\temp\WEB-INF"
 
 REM Copier le contenu du répertoire lib vers temp/WEB-INF/lib
