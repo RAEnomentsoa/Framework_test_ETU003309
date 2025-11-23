@@ -8,10 +8,10 @@
 <body>
 
 	<h1>Test View</h1>
-    <h2>Sprint 4 bis test</h2>
+    <h2>Sprint 5 test</h2>
     	<p>hello world</p>
-	<%-- <p>Message: ${message}</p> --%>
-<%--      
+	<p>Message: ${message}</p>
+     
      <%
     String[] arr = (String[]) request.getAttribute("items");
 %>
@@ -20,7 +20,7 @@
 <% for (String item : arr) { %>
     <li><%= item %></li>
 <% } %>
-</ul> --%>
+</ul>
 
 
 	
