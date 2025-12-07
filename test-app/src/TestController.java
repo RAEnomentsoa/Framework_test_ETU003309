@@ -19,10 +19,7 @@ public class TestController {
     }
 
     @Route("/test/hello")
-    public String hello(String path, String methodName, String ControllerName) {
-        return "<h1>Hello Controller</h1>"
-                + "<p>URL: " + path + "</p>"
-                + "<p>Method: " + methodName + "</p>"
-                + "<p>Controller: " + ControllerName + "</p>";
+    public String hello() {
+        return "<h1>Hello Controller</h1>";
     }
 }
