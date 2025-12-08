@@ -11,8 +11,9 @@ public class helloController {
         return "<h1>Controller 2 Test</h1>";
     }
 
-    @Route("/hello/{valeur}")
-    public String hello() {
-        return "<h1>Hello Controller</h1>";
+    @Route("/hello/test")
+    public String hello(int id) {
+        return "<h1>Hello Controller</h1>"
+                + "<p>ID: " + id + "</p>";
     }
 }
