@@ -11,8 +11,11 @@ public class helloController {
         return "<h1>Controller 2 Test</h1>";
     }
 
-    @Route("/hello/{valeur}")
-    public String hello() {
-        return "<h1>Hello Controller</h1>";
+    @Route("/hello/test")
+    public String hello(int id) {
+        // url testana hoe mande ex:
+        // http://localhost:8080/framework_test/hello/test?id=11
+        return "<h1>Hello Controller</h1>"
+                + "<p>ID: " + id + "</p>";
     }
 }
