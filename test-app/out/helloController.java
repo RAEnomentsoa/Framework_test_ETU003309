@@ -20,7 +20,7 @@ public class helloController {
                 + "<p>ID: " + id + "</p>";
     }
 
-    @Route("/hello/test2/{id}")
+    @Route("/hello/test2/{id}") // {id} azo avy ato ilay id
     public String test(int id) {
         // url testana hoe mande ex:
         // http://localhost:8080/framework_test/hello/test?id=11 -> x=11 vao mety
