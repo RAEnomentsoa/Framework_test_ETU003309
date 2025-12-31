@@ -63,18 +63,18 @@ public class TestController {
 
     }
 
-    // @Route(value = "/save", method = "POST")
-    // public String save(Map<String, Object> data) {
-    // // data.get("name") -> "Alice"
-    // // data.get("skills") -> List<String> ["java","spring"]
-    // return data.toString();
-    // }
-
     @Route(value = "/save", method = "POST")
-    public String save(UserForm form) {
+    public String save(Map<String, Object> data) {
         // data.get("name") -> "Alice"
         // data.get("skills") -> List<String> ["java","spring"]
-        return "name=" + form.name + " skills=" + form.skills;
+        return data.toString();
     }
+
+    // @Route(value = "/save", method = "POST")
+    // public String save(UserForm form) {
+    // // data.get("name") -> "Alice"
+    // // data.get("skills") -> List<String> ["java","spring"]
+    // return "name=" + form.name + " skills=" + form.skills;
+    // }
 
 }
