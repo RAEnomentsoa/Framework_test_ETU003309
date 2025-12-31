@@ -2,6 +2,10 @@ package app.controllers;
 
 import core.annotation.Controller;
 import core.annotation.Route;
+import app.models.UserForm;
+
+import java.util.Map;
+
 import core.ModelView;
 
 @Controller
@@ -50,4 +54,27 @@ public class TestController {
         mv.addItem("id", id);
         return mv;
     }
+
+    @Route("/sprint8")
+    public ModelView sprint8() {
+        // test method returning a view
+        ModelView mv = new ModelView("test_S8.jsp");
+        return mv;
+
+    }
+
+    // @Route(value = "/save", method = "POST")
+    // public String save(Map<String, Object> data) {
+    // // data.get("name") -> "Alice"
+    // // data.get("skills") -> List<String> ["java","spring"]
+    // return data.toString();
+    // }
+
+    @Route(value = "/save", method = "POST")
+    public String save(UserForm form) {
+        // data.get("name") -> "Alice"
+        // data.get("skills") -> List<String> ["java","spring"]
+        return "name=" + form.name + " skills=" + form.skills;
+    }
+
 }
