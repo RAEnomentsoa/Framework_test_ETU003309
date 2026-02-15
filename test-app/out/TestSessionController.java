@@ -8,10 +8,9 @@ import core.annotation.RequestParam;
 import core.annotation.RestAPI;
 
 @Controller
-@Route("/test/session")
 public class TestSessionController {
 
-    @Route(value = "/set", method = "GET")
+    @Route(value = "/test/session/set", method = "GET")
     public String set(Session session,
             @RequestParam("key") String key,
             @RequestParam("value") String value) {
@@ -20,7 +19,7 @@ public class TestSessionController {
         return "Stored in session: " + key + "=" + value;
     }
 
-    @Route(value = "/get", method = "GET")
+    @Route(value = "/test/session/get", method = "GET")
     public String get(Session session,
             @RequestParam("key") String key) {
 
@@ -28,19 +27,19 @@ public class TestSessionController {
         return "Session value: " + value;
     }
 
-    @Route(value = "/all", method = "GET")
+    @Route(value = "/test/session/all", method = "GET")
     @RestAPI
     public Object all(Session session) {
         return session.getAll();
     }
 
-    @Route(value = "/invalidate", method = "GET")
+    @Route(value = "/test/session/invalidate", method = "GET")
     public String invalidate(Session session) {
         session.invalidate();
         return "Session invalidated";
     }
 
-    @Route(value = "/demo", method = "GET")
+    @Route(value = "/test/session/demo", method = "GET")
     public ModelView demo(Session session) {
         ModelView mv = new ModelView("session.jsp");
         mv.addItem("sessionId", session.getId());

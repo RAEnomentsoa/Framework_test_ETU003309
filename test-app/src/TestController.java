@@ -3,6 +3,7 @@ package app.controllers;
 import core.annotation.Controller;
 import core.annotation.Route;
 import app.models.UserForm;
+import core.Session;
 
 import java.util.Map;
 
@@ -12,11 +13,12 @@ import core.ModelView;
 public class TestController {
 
     @Route("/test0")
-    public ModelView test() {
+    public ModelView test(Session session) {
         // test method returning a view
         ModelView mv = new ModelView("testView.jsp");
         String[] items = { "Item 1", "Item 2", "Item 3" };
         mv.addItem("items", items);
+        mv.addItem("username", session.get("username"));
         mv.addItem("message", "This is a test message from TestController.");
         return mv;
 
@@ -75,6 +77,20 @@ public class TestController {
         // data.get("name") -> "Alice"
         // data.get("skills") -> List<String> ["java","spring"]
         return "name=" + form.name + " skills=" + form.skills;
+    }
+
+    // TEST session
+    @Route(value = "/test/session/setuser", method = "GET")
+    public String setSessionValue(Session session) {
+        String key = "username";
+        String value = "Alice";
+        session.set(key, value);
+        if (key == null || value == null) {
+            return "Missing key or value parameter";
+        }
+        session.set(key, value);
+        return "Set session key '" + key + "' to value '" + value + "'";
+
     }
 
 }
