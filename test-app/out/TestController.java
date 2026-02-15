@@ -82,9 +82,13 @@ public class TestController {
     // TEST session
     @Route(value = "/test/session/setuser", method = "GET")
     public String setSessionValue(Session session) {
-        String key = "username";
+        String key = "user";
         String value = "Alice";
+        String key2 = "role";
+        String value2 = "CEO";
+
         session.set(key, value);
+        session.set(key2, value2);
         if (key == null || value == null) {
             return "Missing key or value parameter";
         }
