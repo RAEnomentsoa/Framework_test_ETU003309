@@ -23,6 +23,9 @@
 </ul>
 
 
+<p>Username: ${username}</p>
+
+
 	
 
 	<p><a href="${pageContext.request.contextPath}/">Home</a></p>
