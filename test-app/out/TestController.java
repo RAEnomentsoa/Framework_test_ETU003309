@@ -49,7 +49,7 @@ public class TestController {
     }
 
     @Route(value = "/test1/{id}", method = "GET")
-    public ModelView getById(int id) {
+    public ModelView getById(int id, Session session) {
         ModelView mv = new ModelView("test.jsp");
         mv.addItem("message", "GET with path variable");
         mv.addItem("method", "GET");

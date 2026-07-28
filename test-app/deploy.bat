@@ -47,8 +47,14 @@ mkdir "%local%\temp\WEB-INF\classes"
 if exist "%working_dir%\web\index.jsp" (
     copy "%working_dir%\web\index.jsp" "%local%\temp"
 )
-REM Copy everything except index.*
-robocopy "%working_dir%\web" "%local%\temp\WEB-INF" /S /E /XF index.jsp index.html /NFL /NDL /NJH /NJS /NP
+
+REM Copy static assets (css/js/images) to the WAR root so browsers can fetch them directly
+if exist "%working_dir%\web\css" (
+    robocopy "%working_dir%\web\css" "%local%\temp\css" /S /E /NFL /NDL /NJH /NJS /NP
+)
+
+REM Copy everything except index.* and static assets already copied above
+robocopy "%working_dir%\web" "%local%\temp\WEB-INF" /S /E /XF index.jsp index.html /XD css /NFL /NDL /NJH /NJS /NP
 
 copy "%working_dir%\*.xml" "%local%\temp\WEB-INF"
 

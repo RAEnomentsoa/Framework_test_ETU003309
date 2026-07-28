@@ -29,8 +29,8 @@ public class UserFileController {
         // uploaded file
         if (user.getPhoto() != null) {
 
-            // 1) Resolve WEB-INF/uploads real path
-            String uploadDir = core.AppContext.getWebInfPath() + java.io.File.separator + "uploads";
+            // 1) Resolve uploads real path (webapp root, NOT WEB-INF, so files are servable)
+            String uploadDir = getUploadDir();
 
             // 2) Ensure directory exists
             java.nio.file.Path dir = java.nio.file.Paths.get(uploadDir);
@@ -49,5 +49,32 @@ public class UserFileController {
         }
 
         return new ModelView("result.jsp");
+    }
+
+    @Route(value = "/gallery", method = "GET")
+    public ModelView gallery() {
+        ModelView mv = new ModelView("gallery.jsp");
+
+        java.io.File dir = new java.io.File(getUploadDir());
+        java.io.File[] files = dir.listFiles();
+
+        java.util.List<String> fileNames = new java.util.ArrayList<>();
+        if (files != null) {
+            for (java.io.File f : files) {
+                if (f.isFile()) {
+                    fileNames.add(f.getName());
+                }
+            }
+        }
+
+        mv.addItem("files", fileNames);
+        return mv;
+    }
+
+    // Uploads live under the webapp root (not WEB-INF) so Tomcat can serve them
+    // directly at /uploads/* — see web.xml static mapping.
+    private String getUploadDir() {
+        String webappRoot = new java.io.File(core.AppContext.getWebInfPath()).getParent();
+        return webappRoot + java.io.File.separator + "uploads";
     }
 }

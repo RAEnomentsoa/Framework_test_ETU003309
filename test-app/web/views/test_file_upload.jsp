@@ -28,13 +28,14 @@
 
 
 <form action="user/save" method="post" enctype="multipart/form-data">
-  <input type="text" name="username" />
-  <input type="number" name="age" />
-  <input type="file" name="photo" />
+  name : <input type="text" name="username" />
+  age : <input type="number" name="age" />
+  photo: <input type="file" name="photo" />
   <button type="submit">Save</button>
 </form>
 
-    
+<p><a href="${pageContext.request.contextPath}/gallery">View uploaded files &rarr;</a></p>
+
 </div>
 </body>
 </html>

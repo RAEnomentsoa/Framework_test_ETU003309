@@ -15,5 +15,21 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!-- Let Tomcat's own static-file servlet handle /css/*, bypassing RouterServlet -->
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/css/*</url-pattern>
+    </servlet-mapping>
+
+    <!-- Uploaded files live at <webapp-root>/uploads (see UserFileController) -->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/uploads/*</url-pattern>
+    </servlet-mapping>
 
 </web-app>
